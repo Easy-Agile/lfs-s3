@@ -10,7 +10,7 @@ import (
 	"github.com/joho/godotenv"
 )
 
-var Version = "Custom build"
+var Version = "0.1.6"
 var (
 	printVersion bool
 	debug        bool
