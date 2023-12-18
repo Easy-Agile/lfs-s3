@@ -7,6 +7,7 @@ import (
 	"os"
 
 	"git.sr.ht/~ngraves/lfs-s3/service"
+	"github.com/joho/godotenv"
 )
 
 var Version = "Custom build"
@@ -45,6 +46,12 @@ func execute() {
 	if printVersion {
 		os.Stderr.WriteString(fmt.Sprintf("git-lfs-s3 %v\n", Version))
 		os.Exit(0)
+	}
+
+	err := godotenv.Load()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error loading .env file")
+		os.Exit(1)
 	}
 
 	service.Serve(os.Stdin, os.Stdout, func() io.Writer {
