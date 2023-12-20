@@ -165,7 +165,7 @@ func retrieve(oid string, size int64, writer io.Writer, stderr io.Writer) {
 	})
 
 	if err != nil {
-		fmt.Fprintf(stderr, "Error downloading file: %v\n", err)
+		api.SendTransferError(oid, 1, fmt.Sprintf("Error downloading file: %v\n", err), writer, stderr)
 		return
 	}
 
@@ -211,7 +211,7 @@ func store(oid string, size int64, writer io.Writer, stderr io.Writer) {
 	})
 
 	if err != nil {
-		fmt.Fprintf(stderr, "Error uploading file: %v\n", err)
+		api.SendTransferError(oid, 1, fmt.Sprintf("Error uploading file: %v\n", err), writer, stderr)
 		return
 	}
 
