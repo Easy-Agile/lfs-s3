@@ -50,8 +50,7 @@ func execute() {
 
 	err := godotenv.Load()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error loading .env file")
-		os.Exit(1)
+		fmt.Fprintf(os.Stderr, "Attempted to load .env file but failed")
 	}
 
 	service.Serve(os.Stdin, os.Stdout, func() io.Writer {
